@@ -7,6 +7,8 @@ class Shop(models.Model):
     #address from Google API
     shop_name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50) # use slugify to populate from shop_name
+    address = models.CharField(max_length=100)
+    phone = PhoneField(blank=True, help_text='Contact phone number')
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     
     def __str__(self):
