@@ -1,20 +1,25 @@
 from django.shortcuts import render, redirect
-from .forms import ShopCreateForm, ServiceCreateForm, ClientRegisterForm, AppointmentRegisterForm # TODO
+from .forms import ShopCreateForm, ServiceCreateForm, ClientRegisterForm, AppointmentRegisterForm
 from django.utils.text import slugify
+from shop.models import Shop
 
 
 def shop_create(request):
+    if Shop.objects.filter(user_id = request.user.id).exists():
+        shop_slug = Shop.objects.get(user_id = request.user.id).slug
+        redirect(f"/dashboard/{shop_slug}/")
     if request.method == 'POST':
         form = ShopCreateForm(request.POST)
         if form.is_valid():
             form.save(user_id = request.user.id)
-            cd = form.cleaned_data # TODO
-            return redirect('dashboard', shop_slug=slugify(cd['shop_name']))
+            cd = form.cleaned_data
+            shop_slug=slugify(cd['shop_name'])
+            return redirect(f'/dashboard/{shop_slug}')
     else:
         form = ShopCreateForm()
         return render(request, 'shop/shop_create.html', {'form': form})
 
-def service_create(request, shop_slug): #TODO: provide shop slug to view form url
+def service_create(request, shop_slug):
     if request.method == 'POST':
         form = ServiceCreateForm(request.POST)
         if form.is_valid():          
@@ -40,8 +45,10 @@ def appointment_register(request, shop_slug, service_slug, client_id):
     if request.method == 'POST':
         form = AppointmentRegisterForm(request.POST)
         if form.is_valid():
-            form.save(client_id, shop_slug, service_slug) # TODO: client_name, shop_slug, service_slug
-            return redirect('dashboard', shop_slug=shop_slug)
+            form.save(client_id, shop_slug, service_slug)
+            
+            # TODO: render template
+            return render(request, 'registration_complete.html') 
     else:
         form = AppointmentRegisterForm()
         return render(request, 'shop/appointment_register.html', {'form': form})

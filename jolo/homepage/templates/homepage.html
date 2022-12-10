@@ -33,15 +33,15 @@
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <button class="btn" id="btn1">Log In</button>
-            <button class="btn" id="btn2">Sign Up</button>
+            <a href="{% url 'login' %}"><button class="btn" id="btn1">Log In</button></a>
+            <a href="{% url 'register' %}"><button class="btn" id="btn2">Sign Up</button></a>
         </div>
         <div class="content">
             <div class="text">
             <h1>Maximize your business<br><span>Use JOLO</span></h1>
             <p text-align="left">Jolo helps to set up your business in matter of few seconds. <br>It is a simple webapp that helps service based business to setup their online stores.
             </p>
-            <button class="btn3">Get Started</button>
+            <a href="{% url 'register' %}"><button class="btn3">Get Started</button></a>
            </div>
         <div class="pepsi">
         <img src="{% static 'img/big.png' %}" alt="">

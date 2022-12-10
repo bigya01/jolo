@@ -3,9 +3,15 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
 from .forms import LoginForm, SignUpForm
+from shop.models import Shop
 
 
 def login_view(request):
+    if request.user.id:
+        if Shop.objects.filter(user_id = request.user.id).exists():
+            shop_slug = Shop.objects.get(user_id = request.user.id).slug
+            return redirect(f"/dashboard/{shop_slug}/")
+        return redirect("/shop/setup")
     form = LoginForm(request.POST or None)
 
     msg = None
@@ -18,18 +24,26 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/")
+                if Shop.objects.filter(user_id = request.user.id).exists():
+                    shop_slug = Shop.objects.get(user_id = request.user.id).slug
+                    return redirect(f"/dashboard/{shop_slug}/")
+                return redirect("/shop/setup")
             else:
                 msg = 'Invalid credentials'
         else:
             msg = 'Error validating the form'
-
+    
     return render(request, "accounts/login.html", {"form": form, "msg": msg})
 
 # Create your views here
 
 
 def register_user(request):
+    if request.user.id:
+        if Shop.objects.filter(user_id = request.user.id).exists():
+            shop_slug = Shop.objects.get(user_id = request.user.id).slug
+            return redirect(f"/dashboard/{shop_slug}/")
+        return redirect("/shop/setup")
     msg = None
     success = False
 
@@ -43,7 +57,7 @@ def register_user(request):
 
             msg = 'User created - please <a href="/shop/setup">login</a>.'
             success = True
-
+            return redirect("/shop/setup")
             #return render(request, "accounts/setup_shop.html", {})
         else:
             msg = 'Form is not valid'
@@ -53,5 +67,5 @@ def register_user(request):
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
 
-def setup_shop(request):
-    return render(request, "accounts/setup_shop.html", {})
+# def setup_shop(request):
+#     return render(request, "accounts/setup_shop.html", {})
