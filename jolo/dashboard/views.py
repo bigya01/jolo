@@ -7,10 +7,12 @@ def dashboard_view(request):
     return render(request, 'home/index.html')
 
 def location_view(request):
-    pass
+    return render(request, 'home/map.html')
+
 
 def users_view(request):
-    pass
+    return render(request, 'home/map.html')
+
 
 def services_view(request):
     pass
