@@ -40,8 +40,8 @@ def appointment_register(request, shop_slug, service_slug, client_id):
     if request.method == 'POST':
         form = AppointmentRegisterForm(request.POST)
         if form.is_valid():
-            form.save() # TODO: client_name, shop_slug, service_slug
-            return redirect('appointment_list')
+            form.save(client_id, shop_slug, service_slug) # TODO: client_name, shop_slug, service_slug
+            return redirect('dashboard', shop_slug=shop_slug)
     else:
         form = AppointmentRegisterForm()
-        return render(request, 'appointment/appointment_register.html', {'form': form})
+        return render(request, 'shop/appointment_register.html', {'form': form})
