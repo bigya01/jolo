@@ -39,7 +39,7 @@ def login_view(request):
 
 
 def register_user(request):
-    if request.user:
+    if request.user.id:
         if Shop.objects.filter(user_id = request.user.id).exists():
             shop_slug = Shop.objects.get(user_id = request.user.id).slug
             return redirect(f"/dashboard/{shop_slug}/")
