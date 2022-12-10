@@ -12,7 +12,7 @@ def location_view(request):
 
 
 def users_view(request):
-    return render(request, 'home/map.html')
+    return render(request, 'home/users.html')
 
 
 def services_view(request):
