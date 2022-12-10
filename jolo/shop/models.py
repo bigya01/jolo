@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
-from phone_field import PhoneField
-
+from phone_field import PhoneField  # TODO: pip install django-phone-field
+from datetime import datetime
 
 class Shop(models.Model):
     #address from Google API
@@ -40,11 +40,26 @@ APPOINTMENT_STATUS_CHOICES =(
     ("Confirmed", "Confirmed"),
     ("Cancelled", "Cancelled"),
 )
+
+TIME_CHOICES = (
+    ("10 AM", "10 AM"),
+    ("3:30 PM", "3:30 PM"),
+    ("4 PM", "4 PM"),
+    ("4:30 PM", "4:30 PM"),
+    ("5 PM", "5 PM"),
+    ("5:30 PM", "5:30 PM"),
+    ("6 PM", "6 PM"),
+    ("6:30 PM", "6:30 PM"),
+    ("7 PM", "7 PM"),
+    ("7:30 PM", "7:30 PM"),
+)
+
 class Appointment(models.Model):
-    appointment_time = models.CharField(max_length=50)
+    appointment_time = models.CharField(max_length=10, choices=TIME_CHOICES, default="3 PM")
     appointment_status = models.CharField(max_length=10, choices=APPOINTMENT_STATUS_CHOICES, default="Pending")
     service = models.ForeignKey(Service, related_name='service_appointment', on_delete=models.CASCADE)
     shop = models.ForeignKey(Shop, related_name='shop_appointment', on_delete=models.CASCADE)
+    time_ordered = models.DateTimeField(default=datetime.now, blank=True)
     client = models.ForeignKey(Client, related_name='client_appointment', on_delete=models.CASCADE)
     
     def __str__(self):
