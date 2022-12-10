@@ -41,7 +41,7 @@ APPOINTMENT_STATUS_CHOICES =(
     ("Cancelled", "Cancelled"),
 )
 class Appointment(models.Model):
-    appointment_time = models.DateTimeField()
+    appointment_time = models.CharField(max_length=50)
     appointment_status = models.CharField(max_length=10, choices=APPOINTMENT_STATUS_CHOICES, default="Pending")
     service = models.ForeignKey(Service, related_name='service_appointment', on_delete=models.CASCADE)
     shop = models.ForeignKey(Shop, related_name='shop_appointment', on_delete=models.CASCADE)
