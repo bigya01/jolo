@@ -68,4 +68,4 @@ def register_user(request):
 
 
 def setup_shop(request):
-    return render(request, "accounts/setup_shop.html", {})
+    return render(request, "accounts/setup_shop.html", {"shop_slug": "hello" })

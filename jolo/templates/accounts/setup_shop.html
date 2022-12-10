@@ -17,10 +17,11 @@
         <div class="container mt-5">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-8">
-                    <form id="regForm">
-                        <h1 id="register">Survey Form</h1>
+                    <form id="regForm" method="POST">
+                        {% csrf_token %}
+                        <h1 id="register">Tell Us about your Business</h1>
                         <div class="all-steps" id="all-steps"> 
-                          <span class="step"><i class="fa fa-user"></i></span> 
+                          <span class="step">1</span> 
                           <span class="step"><i class="fa fa-map-marker"></i></span>
                           <span class="step"><i class="fa fa-shopping-bag"></i></span>
                           <span class="step"><i class="fa fa-car"></i></span>
@@ -60,7 +61,7 @@
                             <p><input placeholder="Favourite Mobile Brand" oninput="this.className = ''" name="uname"></p>
                         </div>
                         <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-                            <h3>Thankyou for your feedback!</h3> <span>Thanks for your valuable information. It helps us to improve our services!</span>
+                            <h3>Thankyou for registering!</h3> <span>Go to <a href="{% url 'dashboard:dashboard' shop_slug %}"></a></span>
                         </div>
                         <div style="overflow:auto;" id="nextprevious">
                             <div style="float:right;">
