@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect
 from .forms import ShopCreateForm, ServiceCreateForm, ClientRegisterForm, AppointmentRegisterForm # TODO
 from django.utils.text import slugify
+from shop.models import Shop
 
 
 def shop_create(request):
+    if Shop.objects.filter(user_id = request.user.id).exists():
+        shop_slug = Shop.objects.get(user_id = request.user.id).slug
+        redirect(f"/dashboard/{shop_slug}/")
     if request.method == 'POST':
         form = ShopCreateForm(request.POST)
         if form.is_valid():
             form.save(user_id = request.user.id)
             cd = form.cleaned_data # TODO
-            return redirect('dashboard', shop_slug=slugify(cd['shop_name']))
+            shop_slug=slugify(cd['shop_name'])
+            return redirect(f'/dashboard/{shop_slug}')
     else:
         form = ShopCreateForm()
         return render(request, 'shop/shop_create.html', {'form': form})
