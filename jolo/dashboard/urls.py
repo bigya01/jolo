@@ -8,4 +8,6 @@ urlpatterns = [
     path('', users_view, name="users"),
     path('', services_view, name="services"),
     path('', billing_view, name="billing"),
+    path('', billing_view, name="target"),
+
 ]
