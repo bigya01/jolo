@@ -19,6 +19,6 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(models.Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display =['appointment_time', 'appointment_status','choices' ,'service', 'shop', 'client']
-    search_fields = ['appointment_time', 'appointment_status', 'choices','service', 'shop', 'client']
+    list_display =['appointment_time', 'appointment_status','service', 'shop', 'client']
+    search_fields = ['appointment_time', 'appointment_status','service', 'shop', 'client']
 

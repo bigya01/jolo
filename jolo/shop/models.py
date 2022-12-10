@@ -17,7 +17,7 @@ class Service(models.Model):
 class Client(models.Model):
     client_name = models.CharField(max_length=50)
     client_email = models.EmailField(max_length=254)
-    client_phone = models.PhoneField(blank=True, help_text='Contact phone number')
+    client_phone = PhoneField(blank=True, help_text='Contact phone number')
     # shop = models.ForeignKey(Shop, related_name='shop_client', on_delete=models.CASCADE)
 
 
