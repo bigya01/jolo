@@ -9,16 +9,16 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-argon">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
   <title>
-    Django Argon Dashboard - {% block title %} Open-Source Admin Panel {% endblock %} | AppSeed
+    {% block title %} {% endblock %} | jolo
   </title>
 
   <link rel="icon" href="/static/assets/img/brand/favicon.png" type="image/png">
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="/static/assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="{% static 'assets/css/argon.css' %}" type="text/css">
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}
@@ -49,11 +49,10 @@
             <div class="col-lg-5 col-md-6">
               <h1 class="text-white">
                 <a target="_blank" class="text-white"
-                   href="https://appseed.us/admin-dashboards/django-dashboard-argon">Django Argon</a>
+                   href="#">jolo</a>
               </h1>
               <p class="text-lead text-light">
-                Open-Source Flask Starter with Argon Design 
-                Coded by <a target="_blank" class="text-white" href="https://appseed.us">AppSeed</a>.  
+                Your comapnion for your online business journey.   
               </p>
             </div>
           </div>
