@@ -1,0 +1,21 @@
+{% extends 'layouts/base-fullscreen.html' %}
+{% load static %}
+
+{% block title %} Jolo | Logged Out {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href={% static 'assets/css/logout.css' %}
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="logout_container">
+        <p class="logout_text">You have been logged out of Jolo! |</p>
+        <p class="logout_login"><a href="{% url "login" %}">Log back in!</a></p>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

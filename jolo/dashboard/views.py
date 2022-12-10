@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from shop.models import Shop, Service, Client, Appointment
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import  HttpResponse
+
 
 # Create your views here.
 @login_required(login_url='/auth/login/')
@@ -43,9 +44,17 @@ def marketing_view(request, shop_slug):
         return HttpResponse("You are not authorized to view this page!")
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
-    
-    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
-    pass
+
+    APP_DOMAIN = "http://127.0.0.1:8000"
+    SHOP_SLUG = shop_slug
+    SHOP_URL = f"{APP_DOMAIN}/{SHOP_SLUG}"
+    facebook_share_url = f"https://www.facebook.com/dialog/share?app_id=87741124305&href={SHOP_URL}"
+    twitter_share_url = f"https://twitter.com/intent/tweet?url={SHOP_URL}"
+    whatsapp_share_url = f"https://api.whatsapp.com/send/?text={SHOP_URL}-s&type=custom_url&app_absent=0"
+    reddit_share_url = f"https://www.reddit.com/submit?url={SHOP_URL}"  
+
+   
+    return render(request, 'home/marketing.html', {'shop': shop, 'services': services, 'owner': owner, "facebook_share_url": facebook_share_url, "twitter_share_url": twitter_share_url, "whatsapp_share_url": whatsapp_share_url, "reddit_share_url": reddit_share_url})
 
 
 @login_required(login_url='/auth/login/')

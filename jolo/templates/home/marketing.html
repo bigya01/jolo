@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+<!---->
+{% block title %} Marketing {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href={% static 'assets/css/marketing.css' %}
+{% endblock stylesheets %}
+<!---->
+{% block content %}
+
+<div class="wrapper">
+    <div class="container">
+        <h1>Share to socials</h1>
+        <div class="social-button-container">
+            <div class="social-button">
+                <a href={{facebook_share_url}}>
+                    <img src={% static 'assets/img/icons/common/facebook.svg' %} alt="Facebook">
+                </a>
+            </div>
+            <div class="social-button">
+                <a href={{twitter_share_url}}>
+                    <img src={% static 'assets/img/icons/common/twitter.svg' %} alt="Twitter">
+                </a>
+            </div>
+            <div class="social-button">
+                <a href={{whatsapp_share_url}}>
+                    <img src={% static 'assets/img/icons/common/whatsapp.svg' %} alt="Whatsapp">
+                </a>
+            </div>
+            <div class="social-button">
+                <a href={{reddit_share_url}}>
+                    <img src={% static 'assets/img/icons/common/reddit.svg' %} alt="Reddit">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}
