@@ -1,0 +1,65 @@
+:root {
+    /* fonts */
+    --body-medium: Merriweather;
+    --font-nunito: Nunito;
+    --login-info: Poppins;
+    --font-inter: Inter;
+    --font-rubik: Rubik;
+  
+    /* font sizes */
+    --body-small-size: 12px;
+    --body-medium-size: 14px;
+    --headline-small-size: 24px;
+    --headline-medium-size: 32.47px;
+    --font-size-3xl: 34.26px;
+    --font-size-4xl: 40.59px;
+    --headline-medium1-size: 45px;
+    --font-size-6xl: 48px;
+    --font-size-7xl: 57.84px;
+    --font-size-8xl: 57px;
+    --font-size-9xl: 64px;
+    --login-info-size: 72px;
+    --font-size-11xl: 96px;
+  
+    /* Colors */
+    --on-primary: #fff;
+    --alik-dark: #38aca9;
+    --color-teal-200: #267572;
+    --pp: #115250;
+    --color-teal-400: rgba(17, 82, 80, 0.65);
+    --color-teal-500: rgba(17, 82, 80, 0.78);
+    --transparent: #e9f6f5;
+    --grey: #d9d9d9;
+    --color-gray-300: #ccc;
+    --color-gray-400: rgba(217, 217, 217, 0.25);
+    --transp: rgba(217, 217, 217, 0.29);
+    --white: rgba(255, 255, 255, 0.96);
+  
+    /* Gaps */
+    --gap-0: 0px;
+    --gap-xs: 16px;
+    --gap-sm: 32px;
+    --gap-md: 48px;
+    --gap-lg: 64.94px;
+    --gap-xl: 64px;
+    --gap-2xl: 125px;
+  
+    /* Paddings */
+    --padding-2xs: 8px;
+    --padding-xs: 16px;
+    --padding-sm: 16.417057037353516px;
+    --padding-md: 16.235063552856445px;
+    --padding-lg: 17.84462547302246px;
+    --padding-xl: 25.367286682128906px;
+    --padding-2xl: 25px;
+  
+    /* border radiuses */
+    --br-xs: 20px;
+    --br-sm: 34.26px;
+    --br-md: 48.71px;
+    --br-lg: 48px;
+  
+    /* Effects */
+    --dp-penubera: 0px 6px 30px 5px rgba(0, 0, 0, 0.13);
+  }
+  

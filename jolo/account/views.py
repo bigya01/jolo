@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from djangp.http import HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
 from .forms import LoginForm
@@ -20,5 +20,5 @@ def user_login(request):
                 return HttpResponse('Invalid login')
         else:
             form = LoginForm()
-        return render(request, 'account/login.html', {'form': form})
+        return render(request, 'base.html', {'form': form})
 # Create your views here
