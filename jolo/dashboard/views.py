@@ -17,14 +17,14 @@ def dashboard_view(request, shop_slug):
     return render(request, 'home/index.html', {'shop': shop, 'services': services, 'owner': owner})
 
 
-
 @login_required(login_url='/auth/login/')
 def location_view(request, shop_slug):
     shop = get_object_or_404(Shop, slug=shop_slug)
     if not request.user.id == shop.user_id:
         return HttpResponse("You are not authorized to view this page!")
-    
-    return render(request, 'home/map.html')
+    services = Service.objects.all().filter(shop_id=shop.id)
+    owner = User.objects.get(id = request.user.id)
+    return render(request, 'home/map.html', {'shop': shop, 'services': services, 'owner': owner})
 
 @login_required(login_url='/auth/login/')
 def users_view(request, shop_slug):
@@ -34,7 +34,19 @@ def users_view(request, shop_slug):
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
     
-    return render(request, 'home/users.html')
+    return render(request, 'home/users.html', {'shop': shop, 'services': services, 'owner': owner})
+
+@login_required(login_url='/auth/login/')
+def marketing_view(request, shop_slug):
+    shop = get_object_or_404(Shop, slug=shop_slug)
+    if not request.user.id == shop.user_id:
+        return HttpResponse("You are not authorized to view this page!")
+    services = Service.objects.all().filter(shop_id=shop.id)
+    owner = User.objects.get(id = request.user.id)
+    
+    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
+    pass
+
 
 @login_required(login_url='/auth/login/')
 def services_view(request, shop_slug):
@@ -44,7 +56,7 @@ def services_view(request, shop_slug):
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
     
-    # TODO: render template
+    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
     pass
 
 @login_required(login_url='/auth/login/')
@@ -55,7 +67,7 @@ def billing_view(request, shop_slug):
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
 
-    # TODO: render template
+    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
     pass
 
 @login_required(login_url='/auth/login/')
@@ -66,5 +78,5 @@ def target_view(request, shop_slug):
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
 
-    # TODO: render template
+    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
     pass

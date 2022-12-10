@@ -54,7 +54,7 @@ def register_user(request):
             username = form.cleaned_data.get("username")
             raw_password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=raw_password)
-
+            login(request, user)
             msg = 'User created - please <a href="/shop/setup">login</a>.'
             success = True
             return redirect("/shop/setup")
@@ -67,5 +67,5 @@ def register_user(request):
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
 
-# def setup_shop(request):
-#     return render(request, "accounts/setup_shop.html", {})
+def setup_shop(request):
+    return render(request, "accounts/setup_shop.html", {"shop_slug": "hello" })
