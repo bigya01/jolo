@@ -17,6 +17,7 @@ class Shop(models.Model):
     
 class Service(models.Model):
     service_name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50) # use slugify to populate from shop_name
     duration = models.PositiveIntegerField()
     shop = models.ForeignKey(Shop, related_name='shop_service', on_delete=models.CASCADE)
     

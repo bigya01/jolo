@@ -28,12 +28,12 @@ class ServiceCreateForm(forms.ModelForm):
 
     def save(self, shop_slug):
         service = super(ServiceCreateForm, self).save(commit=False)
-
-        service.slug = slugify(service.shop_name)
-        if Shop.objects.filter(slug=self.slug).exists():
+        shop = Shop.objects.get(slug=shop_slug) 
+        service.slug = slugify(service.service_name)
+        if Service.objects.filter(slug=service.slug, shop_id=shop.id).exists():
             raise forms.ValidationError("Service already exists. Please insert a new name!")
         
-        if Shop.objects.filter(slug=shop_slug).exists():
+        if not Shop.objects.filter(slug=shop_slug).exists():
             raise forms.ValidationError("Shop does not exist!")
             
         shop = Shop.objects.get(slug=shop_slug)
@@ -55,11 +55,11 @@ class AppointmentRegisterForm(forms.ModelForm):
     def save(self, client_id, shop_slug, service_slug):
         appointment = super(AppointmentRegisterForm, self).save(commit=False)
         
-        if Client.objects.filter(id = client_id).exists():
+        if not Client.objects.filter(id = client_id).exists():
             raise forms.ValidationError("User is not registered!")
-        if Shop.objects.filter(slug=shop_slug).exists():
+        if not Shop.objects.filter(slug=shop_slug).exists():
             raise forms.ValidationError("Shop does not exist!")
-        if Service.objects.filter(slug=service_slug).exists():
+        if not Service.objects.filter(slug=service_slug).exists():
             raise forms.ValidationError("Service does not exist!")
 
         shop = Shop.objects.get(slug=shop_slug)
