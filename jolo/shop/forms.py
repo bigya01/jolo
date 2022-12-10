@@ -9,17 +9,17 @@ class ShopCreateForm(forms.ModelForm):
         fields = ('shop_name', 'address', 'phone')
 
     # Overriding save function to add slug
-    def save(self, *args, **kwargs):   
-        # shop = super(ShopCreateForm, self).save(commit=False)
-        # shop.shop_slug = slugify(shop.shop_name)
-        # if commit:
-        #     shop.save()
-        # return shop
+    def save(self, user_id):   
+        shop = super(ShopCreateForm, self).save(commit=False)
+        shop.slug = slugify(shop.shop_name)
+        shop.user_id = user_id
+        shop.save()
+        return shop
         
-        self.slug = slugify(self.shop_name, instance=self)
-        if Shop.objects.filter(slug=self.slug).exists():
-            raise forms.ValidationError("Shop already exists. Please insert a new name!")
-        return super().save( *args, **kwargs)
+        # self.slug = slugify(self.shop_name, instance=self)
+        # if Shop.objects.filter(slug=self.slug).exists():
+        #     raise forms.ValidationError("Shop already exists. Please insert a new name!")
+        # return super().save( *args, **kwargs)
 
 class ServiceCreateForm(forms.ModelForm):
     class Meta:

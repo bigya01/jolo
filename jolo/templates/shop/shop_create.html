@@ -1,10 +1,10 @@
-{% extends 'layouts/base.html' %}
+{% comment %} {% extends 'layouts/base.html' %} {% endcomment %}
 
-{% block content %}
+{% comment %} {% block content %} {% endcomment %}
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Save changes"></p>
     </form>
 
-{% endblock content %}
+{% comment %} {% endblock content %} {% endcomment %}

@@ -3,7 +3,7 @@ from .views import dashboard_view, location_view, users_view, services_view, bil
 
 
 urlpatterns = [
-    path('<slug:shop_slug>', dashboard_view, name="dashboard"),
+    path('<slug:shop_slug>/', dashboard_view, name="dashboard"),
     path('<slug:shop_slug>/map/', location_view, name="location"),
     path('<slug:shop_slug>/users/', users_view, name="users"),
     path('<slug:shop_slug>/services/', services_view, name="services"),
