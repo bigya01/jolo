@@ -1,24 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
-from .forms import LoginForm
+from .forms import LoginForm, SignUpForm
 
-def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+
+    msg = None
+
+    if request.method == "POST":
+
         if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(request, username=cd['username'], password=cd['password'])
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
             if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponse('Authenticated successfully')
-                else:
-                    return HttpResponse('Disabled account')
+                login(request, user)
+                return redirect("/")
             else:
-                return HttpResponse('Invalid login')
+                msg = 'Invalid credentials'
         else:
-            form = LoginForm()
-        return render(request, 'base.html', {'form': form})
+            msg = 'Error validating the form'
+
+    return render(request, "accounts/login.html", {"form": form, "msg": msg})
+
 # Create your views here
+
+
+def register_user(request):
+    msg = None
+    success = False
+
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=raw_password)
+
+            msg = 'User created - please <a href="/login">login</a>.'
+            success = True
+
+            # return redirect("/login/")
+
+        else:
+            msg = 'Form is not valid'
+    else:
+        form = SignUpForm()
+
+    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})

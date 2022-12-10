@@ -55,11 +55,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'jolo.urls'
-
+TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIRS],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,4 +128,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
