@@ -1,13 +1,13 @@
 from django.urls import path
-from .views import dashboard_view, location_view, users_view, services_view, billing_view
-from django.contrib.auth.views import LogoutView
+from .views import dashboard_view, location_view, users_view, services_view, billing_view, target_view
+
 
 urlpatterns = [
     path('<slug:shop_slug>', dashboard_view, name="dashboard"),
-    path('', location_view, name="location"),
-    path('', users_view, name="users"),
-    path('', services_view, name="services"),
-    path('', billing_view, name="billing"),
-    path('', billing_view, name="target"),
+    path('<slug:shop_slug>/map/', location_view, name="location"),
+    path('<slug:shop_slug>/users/', users_view, name="users"),
+    path('<slug:shop_slug>/services/', services_view, name="services"),
+    path('<slug:shop_slug>/billing/', billing_view, name="billing"),
+    path('<slug:shop_slug>/target/', target_view, name="target"),
 
 ]
