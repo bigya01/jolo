@@ -14,7 +14,6 @@ def dashboard_view(request, shop_slug):
 def location_view(request):
     return render(request, 'home/map.html')
 
-
 def users_view(request):
     return render(request, 'home/users.html')
 
