@@ -34,15 +34,15 @@
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <button class="btn" id="btn1">Log In</button>
-            <button class="btn" id="btn2">Sign Up</button>
+            <a href="{% url 'login' %}"><button class="btn" id="btn1">Log In</button></a>
+            <a href="{% url 'register' %}"><button class="btn" id="btn2">Sign Up</button></a>
         </div>
         <div class="content">
             <div class="text">
             <h1>Be Young, Have Fun, <br> <span>Drink Pepsi</span></h1>
             <p>Pepsi is a carbonated soft drink manufactured by PepsiCo. <br>Originally created and developed in 1893 by Caleb Bradham <br>and introduced as Brad's Drink, it was renamed as Pepsi-Cola in 1898, and then shortened to Pepsi in 1961.
             </p>
-            <button class="btn3">Buy Now</button>
+            <a href="{% url 'register' %}"><button class="btn3">Get Started</button></a>
            </div>
         <div class="pepsi">
         <img src="{% static 'img/pepsi.png' %}" alt="">
