@@ -30,7 +30,7 @@ class Client(models.Model):
     client_phone = PhoneField(blank=True, help_text='Contact phone number')
     
     def __str__(self):
-        return self.service_name
+        return self.client_name
     # shop = models.ForeignKey(Shop, related_name='shop_client', on_delete=models.CASCADE)
 
 
@@ -47,4 +47,6 @@ class Appointment(models.Model):
     client = models.ForeignKey(Client, related_name='client_appointment', on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.service_name
+        service = Service.objects.get(id = self.service_id)
+
+        return f"Appointment {service.service_name} on {self.appointment_time}"
