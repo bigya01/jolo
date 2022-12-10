@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='/auth/login/')
 def dashboard_view(request):
+    
     return render(request, 'home/index.html')
 
 def location_view(request):

@@ -20,7 +20,7 @@ from account.views import setup_shop
 
 urlpatterns = [
     path('', homepage, name='homepage'),
-    path('setup-shop/', setup_shop, name='setup-shop'),
+    path('shop/', include('shop.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('account.urls')),
