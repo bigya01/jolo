@@ -21,7 +21,7 @@ from account.views import setup_shop
 urlpatterns = [
     path('', homepage, name='homepage'),
     path('shop/', include('shop.urls')),
-    path('dashboard/', include('dashboard.urls')),
+    path('dashboard/', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
     path('admin/', admin.site.urls),
     path('auth/', include('account.urls')),
 ]
