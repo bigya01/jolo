@@ -20,7 +20,7 @@ def shop_create(request):
             return redirect(f'/dashboard/{shop_slug}')
     else:
         form = ShopCreateForm()
-        return render(request, 'shop/shop_create.html', {'form': form})
+        return render(request, 'shop/setup_shop.html', {'form': form})
 
 def service_create(request, shop_slug):
     if request.method == 'POST':
@@ -56,4 +56,5 @@ def appointment_register(request, shop_slug, service_slug, client_id):
         form = AppointmentRegisterForm()
         return render(request, 'shop/appointment_register.html', {'form': form})
     
+  
     

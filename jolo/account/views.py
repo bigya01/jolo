@@ -65,7 +65,3 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
-
-
-def setup_shop(request):
-    return render(request, "accounts/setup_shop.html", {"shop_slug": "hello" })
