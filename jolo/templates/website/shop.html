@@ -1,12 +1,12 @@
 {% extends 'website/shop_base.html' %}
 {% load static %}
 
-{% block title %}{{ shop.shop_name }} | online shop {% endblock title %}
+{% block title %}Jolo | {{ shop.shop_name }}{% endblock title %}
 
 {% block content %}
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'website:shop' shop.slug %}">{{ shop.shop_name|upper }}</a>
+    <a class="navbar-brand header_title" href="{% url 'website:shop' shop.slug %}">{{ shop.shop_name|upper }}</a>
 </nav>
 
 <div class="card-group">

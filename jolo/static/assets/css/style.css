@@ -488,7 +488,7 @@
   max-width: 20%;
   margin-left: 2rem;
   margin-right: 2rem;
-  box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
+  box-shadow: 2px 2px 7px 1px rgba(16, 17, 16, 0.7);
   }
 
   .service.card *{
@@ -498,15 +498,16 @@
   .service.card a{
     text-decoration: none; 
   }
-
-
+  
+  
   .btn-primary{
     background-color:transparent;
     border: 1px solid black;
+    color: black;
   }
 
   .btn-primary:hover{
-    background-color: #E9F6F5;
+    background-color: black;
     color: white ;
     border: white;
   }
@@ -520,8 +521,16 @@
     align-items: center;
   }
 
+  .header_title{
+    color: #212529;
+    font-weight:500 ;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+  }
+
   body{
-    background-color: #439A97;
+    background-color: #212529;
+    font-family: Poppins;
   }
 
   .card{
@@ -529,4 +538,9 @@
     margin:auto;
     padding: auto;
     box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
+   }
+   .wrapper{
+    display: grid;
+    place-items: center;
+    height: 100%;
    }
