@@ -19,9 +19,10 @@ from homepage.views import homepage
 # from account.views import setup_shop
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', homepage, name='homepage'),
+    path('', include(('website.urls', 'website'), namespace='website')),
     path('shop/', include('shop.urls')),
     path('dashboard/', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
-    path('admin/', admin.site.urls),
     path('auth/', include('account.urls')),
 ]

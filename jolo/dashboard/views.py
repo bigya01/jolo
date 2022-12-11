@@ -64,9 +64,12 @@ def services_view(request, shop_slug):
         return HttpResponse("You are not authorized to view this page!")
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
+    # random ratings
+    ratings = range(100)
     
-    # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
-    pass
+    
+    
+    return render(request, 'home/services.html', {'shop': shop, 'services': services, 'owner': owner, "ratings": ratings})
 
 @login_required(login_url='/auth/login/')
 def billing_view(request, shop_slug):

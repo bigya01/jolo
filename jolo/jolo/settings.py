@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'shop.apps.ShopConfig',
     'account.apps.AccountConfig',
+    'website.apps.WebsiteConfig',
     'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
