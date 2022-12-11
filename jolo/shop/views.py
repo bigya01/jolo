@@ -50,7 +50,7 @@ def appointment_register(request, shop_slug, service_slug, client_id):
         if form.is_valid():
             form.save(client_id, shop_slug, service_slug)
             
-            # TODO: render template
+            
             return render(request, 'registration_complete.html') 
     else:
         form = AppointmentRegisterForm()

@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from phone_field import PhoneField  # TODO: pip install django-phone-field
+from phone_field import PhoneField 
 from datetime import datetime
 
 class Shop(models.Model):

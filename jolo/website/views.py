@@ -39,7 +39,7 @@ def appointment_register(request, shop_slug, service_slug, client_id):
         form = AppointmentRegisterForm(request.POST)
         if form.is_valid():          
             response = form.save(shop_slug=shop_slug, service_slug=service_slug,client_id = client_id)
-            return render(request, 'website/appointment_register_complete.html', {'status': response.appointment_status})
+            return render(request, 'website/appointment_register_complete.html', {'status': response.appointment_status, 'shop_slug': shop.slug})
     else:
         form = AppointmentRegisterForm()
         return render(request, 'website/appointment_register.html', {'shop': shop, 'services': service, 'form': form, 'client_id': client_id})
