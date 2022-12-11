@@ -15,9 +15,11 @@
                 <p>Price: {{ service.cost }}</p>
             </div>
         </div>
-        <div class="service-button">
-            <a href="{% url 'website:client_register' shop.slug service.slug %}"><button>Book Now</button></a>
-        </div>
+        <a href="{% url 'website:client_register' shop.slug service.slug %}">
+        <button type="button" class="btn btn-primary">
+            Book Now
+        </button>
+    </a>
     {% endfor %}
 
 </div>
