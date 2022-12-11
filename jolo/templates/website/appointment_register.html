@@ -1,9 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'website/shop_base.html' %}
+
+{% block title %} Book your Appointment {% endblock title %}
+
 
 {% block content %}
+<div class = "form"></div>
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Submit" />
 </form>
+</div>
 {% endblock content %}

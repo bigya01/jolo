@@ -1,6 +1,24 @@
-{% extends 'shop_base.html' %}
+{% extends 'website/shop_base.html' %}
 
-{% block title %}{{ shop.shop_name }} | online shop{% endblock title %}
+{% block title %}{{ shop.shop_name }} | online shop {% endblock title %}
 
 {% block content %}
+<div class="services">
+    {% for service in services %}
+        <div class="service">
+            <div class="service-image">
+                <img src="{{ service.image.url }}" alt="{{ service.name }}">
+            </div>
+            <div class="service-info">
+                <h3>{{ service.service_name }}</h3>
+                <p>{{ service.description }}</p>
+                <p>Price: {{ service.cost }}</p>
+            </div>
+        </div>
+        <div class="service-button">
+            <a href="{% url 'website:client_register' shop.slug service.slug %}"><button>Book Now</button></a>
+        </div>
+    {% endfor %}
+
+</div>
 {% endblock content %}

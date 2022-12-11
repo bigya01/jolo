@@ -18,7 +18,7 @@ def client_register(request, shop_slug, service_slug):
             response = form.save()
             # return render(request, 'website/appointment_register.html', {'shop': shop, 'services': service, 'form': form})
             user_id = response.id
-            return redirect(f"{shop_slug}/{service_slug}/{user_id}/appointment_register/")
+            return redirect(f"/{shop_slug}/{service_slug}/{user_id}/appointment/register/")
     else:
         form = ClientRegisterForm()   
         return render(request, 'website/client_register.html', {'shop': shop, 'services': service, 'form': form})

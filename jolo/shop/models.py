@@ -17,6 +17,7 @@ class Shop(models.Model):
     
 class Service(models.Model):
     service_name = models.CharField(max_length=50)
+    description = models.TextField()
     slug = models.SlugField(max_length=50) # use slugify to populate from shop_name
     duration = models.PositiveIntegerField()
     cost = models.IntegerField()
