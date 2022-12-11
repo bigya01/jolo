@@ -50,7 +50,7 @@ class ClientRegisterForm(forms.ModelForm):
 class AppointmentRegisterForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ('appointment_time', 'appointment_status')
+        fields = ('appointment_time',)
 
     def save(self, client_id, shop_slug, service_slug):
         appointment = super(AppointmentRegisterForm, self).save(commit=False)
