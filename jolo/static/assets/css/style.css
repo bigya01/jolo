@@ -484,18 +484,18 @@
   margin-bottom:2rem;
 }
 
-.card{
+.service.card{
   max-width: 20%;
   margin-left: 2rem;
   margin-right: 2rem;
   box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
   }
 
-  .card *{
+  .service.card *{
     color:rgba(30, 32, 30, 0.852)
   }
 
-  .card a{
+  .service.card a{
     text-decoration: none; 
   }
 
@@ -521,5 +521,5 @@
   }
 
   body{
-    background-color: #4e6552;
+    background-color: #439A97;
   }
