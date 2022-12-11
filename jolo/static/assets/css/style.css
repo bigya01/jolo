@@ -503,6 +503,7 @@
   .btn-primary{
     background-color:transparent;
     border: 1px solid black;
+    color: black;
   }
 
   .btn-primary:hover{
@@ -523,3 +524,11 @@
   body{
     background-color: #E9F6F5;
   }
+  #card
+  {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+  
