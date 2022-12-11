@@ -1,4 +1,6 @@
-<h1>{{shop.shop_name}}</h1>
-{% for service in services %}
-    <h2>{{service.service_name}}</h2>
-{% endfor %}
+{% extends 'shop_base.html' %}
+
+{% block title %}{{ shop.shop_name }} | online shop{% endblock title %}
+
+{% block content %}
+{% endblock content %}
