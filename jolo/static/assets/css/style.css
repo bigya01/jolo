@@ -479,3 +479,47 @@
     }
   }
   
+.card-group{
+  margin-top:2rem;
+  margin-bottom:2rem;
+}
+
+.card{
+  max-width: 20%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
+  }
+
+  .card *{
+    color:rgba(30, 32, 30, 0.852)
+  }
+
+  .card a{
+    text-decoration: none; 
+  }
+
+
+  .btn-primary{
+    background-color:transparent;
+    border: 1px solid black;
+  }
+
+  .btn-primary:hover{
+    background-color: #4e6552;
+    color: white ;
+    border: white;
+  }
+
+  .btn-primary:hover a{
+    color: white ;
+  }
+  .card-footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  body{
+    background-color: #4e6552;
+  }
