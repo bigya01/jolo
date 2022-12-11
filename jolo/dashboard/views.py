@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from shop.models import Shop, Service, Client, Appointment
 from django.contrib.auth.models import User
 from django.http import  HttpResponse
+from shop.forms import ServiceCreateForm
 
 
 # Create your views here.
@@ -92,3 +93,22 @@ def target_view(request, shop_slug):
 
     # TODO: render template DO NOT FORGET TO PASS DICTIONARY=> {'shop': shop, 'services': services, 'owner': owner}
     pass
+
+@login_required(login_url='/auth/login/')
+def add_service(request, shop_slug):
+    shop = get_object_or_404(Shop, slug=shop_slug)
+    if not request.user.id == shop.user_id:
+        return HttpResponse("You are not authorized to view this page!")
+    services = Service.objects.all().filter(shop_id=shop.id)
+    owner = User.objects.get(id = request.user.id)
+    if request.method == 'POST':
+        form = ServiceCreateForm(request.POST)
+        if form.is_valid():
+            form.save(shop_slug = shop_slug)
+            return redirect('dashboard:services', shop_slug=shop_slug)
+    else:
+        form = ServiceCreateForm()
+        return render(request, 'shop/service_create.html', {'shop': shop, 'services': services, 'owner': owner, 'form': form})
+
+
+

@@ -24,7 +24,7 @@ class ShopCreateForm(forms.ModelForm):
 class ServiceCreateForm(forms.ModelForm):
     class Meta:
         model = Service
-        fields = ('service_name', 'duration')
+        fields = ('service_name', 'duration', 'cost')
 
     def save(self, shop_slug):
         service = super(ServiceCreateForm, self).save(commit=False)
