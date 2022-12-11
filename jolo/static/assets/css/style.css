@@ -522,13 +522,12 @@
   }
 
   body{
-    background-color: #E9F6F5;
+    background-color: #439A97;
   }
-  #card
-  {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
-}
 
-  
+  .card{
+    max-width: 50%;
+    margin:auto;
+    padding: auto;
+    box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
+   }
