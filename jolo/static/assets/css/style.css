@@ -523,3 +523,10 @@
   body{
     background-color: #439A97;
   }
+
+  .card{
+    max-width: 50%;
+    margin:auto;
+    padding: auto;
+    box-shadow: 2px 2px 7px 1px rgba(207, 215, 209, 0.7);
+   }
