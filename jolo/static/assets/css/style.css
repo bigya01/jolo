@@ -506,7 +506,7 @@
   }
 
   .btn-primary:hover{
-    background-color: #4e6552;
+    background-color: #E9F6F5;
     color: white ;
     border: white;
   }
@@ -521,5 +521,5 @@
   }
 
   body{
-    background-color: #4e6552;
+    background-color: #E9F6F5;
   }
