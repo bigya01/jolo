@@ -35,8 +35,10 @@ def users_view(request, shop_slug):
         return HttpResponse("You are not authorized to view this page!")
     services = Service.objects.all().filter(shop_id=shop.id)
     owner = User.objects.get(id = request.user.id)
+    clients = Client.objects.all()
+    appointments = Appointment.objects.all().filter(shop_id=shop.id)
     
-    return render(request, 'home/users.html', {'shop': shop, 'services': services, 'owner': owner})
+    return render(request, 'home/users.html', {'shop': shop, 'services': services, 'owner': owner, 'appointments': appointments, 'clients': clients})
 
 @login_required(login_url='/auth/login/')
 def marketing_view(request, shop_slug):

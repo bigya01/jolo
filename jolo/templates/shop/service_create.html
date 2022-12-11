@@ -1,10 +1,24 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Save changes"></p>
-    </form>
+<form method="post" class="mt-2 mlz-3">
+    {% csrf_token %}
+  
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+  
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+      </div>
+    {% endfor %}
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 
 {% endblock content %}

@@ -65,5 +65,6 @@ class Appointment(models.Model):
     
     def __str__(self):
         service = Service.objects.get(id = self.service_id)
+        client = Client.objects.get(id = self.client_id)
 
-        return f"Appointment {service.service_name} on {self.appointment_time}"
+        return f"{client.client_name}'s {service.service_name} appointment"
